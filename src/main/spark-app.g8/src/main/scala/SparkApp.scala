@@ -14,15 +14,15 @@ object SparkApp2 {
 
     val spark = SparkSession.builder.appName("Simple Application").getOrCreate()
 
-    spark.conf.set(s"fs.azure.account.auth.type.$adls.dfs.core.windows.net", 
+    spark.conf.set(s"fs.azure.account.auth.type.\$adls.dfs.core.windows.net", 
                   "OAuth")
-    spark.conf.set(s"fs.azure.account.oauth.provider.type.$adls.dfs.core.windows.net", 
+    spark.conf.set(s"fs.azure.account.oauth.provider.type.\$adls.dfs.core.windows.net", 
                   "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider")
-    spark.conf.set(s"fs.azure.account.oauth2.client.endpoint.$adls.dfs.core.windows.net", 
-                  "https://login.microsoftonline.com/$tenant/oauth2/token")
-    spark.conf.set(s"fs.azure.account.oauth2.client.id.$adls.dfs.core.windows.net", 
+    spark.conf.set(s"fs.azure.account.oauth2.client.endpoint.\$adls.dfs.core.windows.net", 
+                  "https://login.microsoftonline.com/\$tenant/oauth2/token")
+    spark.conf.set(s"fs.azure.account.oauth2.client.id.\$adls.dfs.core.windows.net", 
                    com.databricks.dbutils_v1.DBUtilsHolder.dbutils.secrets.get("rest-kv", "client-id"))
-    spark.conf.set(s"fs.azure.account.oauth2.client.secret.$adls.dfs.core.windows.net", 
+    spark.conf.set(s"fs.azure.account.oauth2.client.secret.\$adls.dfs.core.windows.net", 
                    com.databricks.dbutils_v1.DBUtilsHolder.dbutils.secrets.get("rest-kv", "client-secret"))
 
     try {                  
