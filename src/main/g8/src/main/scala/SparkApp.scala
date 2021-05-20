@@ -10,6 +10,6 @@ object SparkApp2 {
     val version = args(1)
 
     val spark = SparkSession.builder.appName("Simple Application").getOrCreate()
-    val secret = com.databricks.dbutils_v1.DBUtilsHolder.dbutils.secrets.get("a_scope", "a_secret"))
+    val secret = com.databricks.dbutils_v1.DBUtilsHolder.dbutils.secrets.get("a_scope", "a_secret")
   }
 }
